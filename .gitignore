@@ -1,3 +1,4 @@
 *.txt
 books/
 env
+.DS_Store
