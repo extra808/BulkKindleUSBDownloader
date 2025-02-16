@@ -1,10 +1,19 @@
 # Bulk Kindle USB Downloader
 
 
-This is a fork of [BulkKindleUSBDownloader](https://github.com/Jedi425/BulkKindleUSBDownloader), itself a fork of
-[bOOkp](https://github.com/sghctoma/bOOkp). (Thanks, Jedi425 and sghtoma!)
+This is a fork of [BulkKindleUSBDownloader](https://github.com/bellisk/BulkKindleUSBDownloader), itself a fork of [BulkKindleUSBDownloader](https://github.com/Jedi425/BulkKindleUSBDownloader), itself a fork of
+[bOOkp](https://github.com/sghctoma/bOOkp). (Thanks, bellisk, Jedi425 and sghtoma!)
 
-My (bellisk's) updates:
+extra808 updates:
+
+- removed PyVirtualDisplay requirement. It's what needed Xvfb, which comes from XWindows, but it's not needed when the script is run on macOS (my guess is it's also not required for Windows). This means the `--showbrowser` parameter will do nothing; on macOS, Chrome is not headless during the initial authentication phase anyway.
+
+extra808 observations:
+
+- Using the original script, with the PyVirtualDisplay requirement, worked on macOS after installing XQuartz and adding `/opt/X11/bin` to the `PATH`.
+- On my first attempt, after password authentication, there was a page recommending adding a phone number to the Amazon account. The script didn't expect this and it failed. The page didn't appear on my second attempt; in-between attempts, I logged into Amazon manually but this might not have been a factor.
+
+(bellisk's) updates:
 - support downloading books from amazon.co.uk, amazon.com and amazon.de
 - download books that you have access to because they're shared with you by a family member, as well as books you
   have purchased

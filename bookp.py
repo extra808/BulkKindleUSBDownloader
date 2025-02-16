@@ -12,7 +12,6 @@ import sys
 import urllib.parse
 
 from argparse import ArgumentParser
-from pyvirtualdisplay import Display
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
@@ -45,10 +44,6 @@ environments = {
 
 
 def create_session(email, password, oath, environment, browser_visible=True, proxy=None):
-    if not browser_visible:
-        display = Display(visible=0)
-        display.start()
-
     logger.info("Starting browser")
     options = webdriver.ChromeOptions()
     if proxy:
@@ -112,8 +107,6 @@ def create_session(email, password, oath, environment, browser_visible=True, pro
         cookies[cookie['name']] = cookie['value']
 
     browser.quit()
-    if not browser_visible:
-        display.stop()
 
     return cookies, csrf_token, custid
 
